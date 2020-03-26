@@ -7,7 +7,7 @@
 </head>
 <body layout:fragment="content">
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper" style="margin-top: 10px">
             <form method="get" th:object="${searchForm}" th:action="@{/country}">
                 <div class="input-field indigo lighten-1">
                     <input id="search" type="search" th:placeholder="Search" th:field="${searchForm.search}">
