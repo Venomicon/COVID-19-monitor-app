@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head lang="en">
+    <title>STATUS</title>
+</head>
+<body layout:fragment="content">
+    <nav>
+        <div class="nav-wrapper">
+            <form method="get" th:object="${searchForm}" th:action="@{/country}">
+                <div class="input-field indigo lighten-1">
+                    <input id="search" type="search" th:placeholder="Search" th:field="${searchForm.search}">
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card-panel center">
+            <div class="row center">
+                <h1 th:text="${searchForm.getSearch().toUpperCase()}"></h1>
+            </div>
+            <div class="container">
+                <div class="row center">
+                    <div class="col s4">
+                        <div class="row center">
+                            <b>Confirmed</b>
+                        </div>
+                        <div class="row center">
+                            <b class="indigo-text" th:text="${countryStatus.getConfirmed()}"></b>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="row center">
+                            <b>Deaths</b>
+                        </div>
+                        <div class="row center">
+                            <b class="indigo-text" th:text="${countryStatus.getDeaths()}"></b>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="row center">
+                            <b>Recovered</b>
+                        </div>
+                        <div class="row center">
+                            <b class="indigo-text" th:text="${countryStatus.getRecovered()}"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row center">
+            <div class="btn-large indigo" style="width: max-content">
+                <a class="white-text" th:href="'https://www.google.pl/search?q=covid-19+'+${searchForm.getSearch()}+'&source=lnms&tbm=nws'">Find out more!</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/webjars/jquery/3.4.1/jquery.js"></script>
+    <script src="/webjars/materializecss/1.0.0/js/materialize.js"></script>
+</body>
+</html>
