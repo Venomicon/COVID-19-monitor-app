@@ -55,6 +55,7 @@ public class HomeController {
     }
 
     private String getCountryResponse(String searched) throws UnirestException {
+        searched = searched.replaceAll(" ", "%20");
         String url = new StringBuilder("https://covid-19-data.p.rapidapi.com/country?format=json&name=")
                 .append(searched)
                 .toString();
